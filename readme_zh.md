@@ -6,3 +6,7 @@
 
 - 添加了亚博无线手柄的支持
   针对[亚博USB无线手柄](https://yahboom.com/study_module/PS2)的协议添加了手柄映射代码(simulate/src/physics_joystick.h)
+
+- 添加了对深度图像获取的支持
+
+  在`go2.xml`中添加了camera元素，并通过mujoco接口获取了深度图像数据. 深度图数据通过cyclonedds被发布到"rt/depthimage"话题. 使用了unitree_sdk2py的接口来进行dds的发布和订阅. 
