@@ -48,10 +48,11 @@ dim_motor_sensor_ = 3 * num_motor_
 time.sleep(0.2)
 
 def SimulationThread():
-    global mj_data, mj_model
+    global mj_data, mj_model, depth_image
 
     ChannelFactoryInitialize(config.DOMAIN_ID, config.INTERFACE)
     unitree = UnitreeSdk2Bridge(mj_model, mj_data)
+    depth_image_publisher = DepthImagePublisher(depth_image, config.DEPTH_PUBLISH_DT)
 
     if config.USE_JOYSTICK:
         unitree.SetupJoystick(device_id=0, js_type=config.JOYSTICK_TYPE)
@@ -82,8 +83,7 @@ def PhysicsViewerThread():
     global camera_name, original_width, original_height, depth_image
     # Create the Renderer and scene in this thread to avoid X BadAccess errors.
     renderer = mujoco.Renderer(mj_model, original_height, original_width)
-    depth_image_publisher = DepthImagePublisher(depth_image, config.DEPTH_PUBLISH_DT)
-
+    
     while viewer.is_running():
         step_start = time.perf_counter()
         locker.acquire()
