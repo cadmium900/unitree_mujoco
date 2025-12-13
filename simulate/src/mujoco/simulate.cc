@@ -1366,7 +1366,8 @@ namespace
     }
     fs = mju_round(fs * 0.02) * 50;
     fs = mjMIN(300, mjMAX(100, fs));
-
+	
+    fs = 100; //***
     return fs;
   }
 

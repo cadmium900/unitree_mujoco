@@ -37,7 +37,7 @@
           <geom type="box" size="0.05 0.05 0.026" pos="0.018 0 -0.213" priority="1" condim="6"
             friction="0.6 0.02 0.01"/>
           <motor ctrlrange="-10.0 10.0"/>
-          <joint range="-0.3 0.4"/>
+          <joint range="-0.3 0.8"/>
         </default>
       </default>
     </default>
